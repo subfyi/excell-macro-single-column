@@ -1,0 +1,20 @@
+'Printing Sub-Side Columns Under a Single Column
+
+Sub Tablo()
+
+    Dim S2 As Worksheet, sat As Long, sut As Long, i As Integer, son As Long
+
+    Set S2 = Sheets("Sheet2")
+
+    Sheets("Sheet1").Select
+    S2.Range("A:A").ClearContents
+    S2.Range("B:B").ClearContents
+
+    sat = 1
+    For i = 1 To 50
+        son = Cells(Rows.Count, i).End(xlUp).Row
+        Cells(1, i).Resize(son, 1).Copy S2.Cells(sat, "A")
+        sat = S2.Cells(Rows.Count, "A").End(xlUp).Row + 1
+    Next i
+
+End Sub

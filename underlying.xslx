@@ -1,0 +1,23 @@
+'To print the underlying lines in a single column
+
+Sub Tablo()
+
+    Dim S2 As Worksheet, sat As Long, i As Integer, j As Integer, son As Long
+
+    Set S2 = Sheets("Sheet2")
+
+    Sheets("Sheet1").Select
+    S2.Range("A:A").ClearContents
+
+    sat = 1
+
+    For j = 1 To 50
+        For i = 1 To 50
+            Cells(j, i).Copy S2.Cells(sat, "A")
+            sat = S2.Cells(Rows.Count, "A").End(xlUp).Row + 1
+        Next i
+    Next j
+
+End Sub
+
+
